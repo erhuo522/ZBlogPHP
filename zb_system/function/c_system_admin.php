@@ -122,8 +122,6 @@ function ResponseAdmin_TopMenu(){
 		$fpname($topmenus);
 	}
 
-	$topmenus[]=MakeTopMenu("misc",$zbp->lang['msg']['official_website'],"http://www.zblogcn.com/","_blank","");
-
 	foreach ($topmenus as $m) {
 		echo $m;
 	}
@@ -452,26 +450,8 @@ function Admin_SiteInfo(){
 
 	echo '</table>';
 
-	echo '<table class="tableFull tableBorder" id="tbUpdateInfo"><tr><th>&nbsp;' . $zbp->lang['msg']['latest_news'] . ($zbp->CheckRights('root')?'&nbsp;<a href="javascript:updateinfo(\'?act=misc&amp;type=updateinfo\');">[' . $zbp->lang['msg']['refresh'] . ']</a>':'') . ' <img id="infoloading" style="display:none" src="../image/admin/loading.gif" alt=""/></th></tr>';
-
-	if((time()-(int)$zbp->cache->reload_updateinfo_time) > (47*60*60) && $zbp->CheckRights('root') && $echostatistic==true){
-		echo '<script type="text/javascript">$(document).ready(function(){ updateinfo(\'?act=misc&type=updateinfo\'); });</script>';
-	}else{
-		echo $zbp->cache->reload_updateinfo;
-	}
-
-	echo '</table>';
-
 	echo '</div>';
 
-	$s = file_get_contents($zbp->path . "zb_system/defend/thanks.html");
-	$s = str_replace('{$lang[\'msg\'][\'develop_intro\']}',$zbp->lang['msg']['develop_intro'],$s);
-	$s = str_replace('{$lang[\'msg\'][\'program\']}',$zbp->lang['msg']['program'],$s);
-	$s = str_replace('{$lang[\'msg\'][\'interface\']}',$zbp->lang['msg']['interface'],$s);
-	$s = str_replace('{$lang[\'msg\'][\'support\']}',$zbp->lang['msg']['support'],$s);
-	$s = str_replace('{$lang[\'msg\'][\'thanks\']}',$zbp->lang['msg']['thanks'],$s);
-	$s = str_replace('{$lang[\'msg\'][\'website\']}',$zbp->lang['msg']['website'],$s);
-	echo $s;
 	echo '<script type="text/javascript">ActiveTopMenu("topmenu1");</script>';
 	echo '<script type="text/javascript">AddHeaderIcon("'. $zbp->host . 'zb_system/image/common/home_32.png' . '");</script>';
 
