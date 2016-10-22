@@ -1,0 +1,1 @@
+通过FTP上传到Z-BlogPHP的根目录，在浏览器中打开nologin.php，使用过后请FTP删除。
